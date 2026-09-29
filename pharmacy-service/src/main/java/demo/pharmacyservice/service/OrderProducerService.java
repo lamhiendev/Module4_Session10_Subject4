@@ -24,12 +24,31 @@ public class OrderProducerService {
     public OrderEvent sendOrderEvent(String medicineId, int quantity) {
         // 1. Khởi tạo đối tượng OrderEvent
         String orderId = "ORD-" + UUID.randomUUID().toString().substring(0, 8);
-        OrderEvent orderEvent = new OrderEvent(orderId, medicineId, quantity, LocalDateTime.now());
+        OrderEvent orderEvent = new OrderEvent(orderId, medicineId, quantity);
 
-        kafkaTemplate.send(TOPIC, orderEvent.getMedicineId(), orderEvent);
+        kafkaTemplate.send(
+                "medicine-stock-events",
+                orderEvent.getMedicineId(),
+                orderEvent
+        ).whenComplete((result, ex) -> {
 
-        System.out.println("Đã gửi sự kiện đơn hàng ID: " + orderEvent.getOrderId());
+            if (ex != null) {
+                System.out.println("❌ Gửi Kafka thất bại: " + ex.getMessage());
+                ex.printStackTrace();
+                return;
+            }
 
+            System.out.println(
+                    "✅ Kafka đã nhận event. Order ID: "
+                            + orderEvent.getOrderId()
+                            + ", topic: "
+                            + result.getRecordMetadata().topic()
+                            + ", partition: "
+                            + result.getRecordMetadata().partition()
+                            + ", offset: "
+                            + result.getRecordMetadata().offset()
+            );
+        });
         return orderEvent;
     }
 }
