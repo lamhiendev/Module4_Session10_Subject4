@@ -11,7 +11,8 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
 
       properties:
-        spring.json.trusted.packages: "demo.inventoryservice.event"
+        spring.json.trusted.packages: "demo.inventoryservice.dto"
+        spring.json.value.default.type: "demo.inventoryservice.dto.OrderEvent"
   datasource:
     username: postgres
     password: postgres

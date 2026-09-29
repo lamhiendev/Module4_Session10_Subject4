@@ -1,18 +1,15 @@
-package demo.pharmacyservice.dto;
+package demo.notificationservice.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderEvent {
+
     private String orderId;
     private String medicineId;
-    private int quantity;
+    private Integer quantity;
 }
