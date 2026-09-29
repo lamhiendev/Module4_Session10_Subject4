@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Module4_Session9.iml" filepath="$PROJECT_DIR$/.idea/Module4_Session9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/notification-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/notification-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/pharmacy-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/pharmacy-service.main.iml" />
     </modules>
   </component>

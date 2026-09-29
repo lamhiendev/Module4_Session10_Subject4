@@ -1,12 +1,16 @@
 package demo.notificationservice.consumer;
 
 import demo.notificationservice.dto.OrderEvent;
+import jakarta.annotation.PostConstruct;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OrderNotificationConsumer {
-
+    @PostConstruct
+    public void test() {
+        System.out.println("🔥 ORDER NOTIFICATION CONSUMER CREATED");
+    }
     @KafkaListener(
             topics = "medicine-stock-events",
             groupId = "notification-service-group"
