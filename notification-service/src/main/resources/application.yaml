@@ -14,6 +14,8 @@ spring:
       properties:
         spring.json.trusted.packages: "demo.notificationservice.dto"
         spring.json.value.default.type: "demo.notificationservice.dto.OrderEvent"
-
+logging:
+  level:
+    org.springframework.kafka: DEBUG
 server:
   port: 8082

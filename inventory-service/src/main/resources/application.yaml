@@ -17,6 +17,12 @@ spring:
     username: postgres
     password: postgres
     url: jdbc:postgresql://localhost:5432/inventory_db
-
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+logging:
+  level:
+    org.springframework.kafka: DEBUG
 server:
   port: 8081
